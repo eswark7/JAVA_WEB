@@ -1,0 +1,70 @@
+//HTML FILE
+
+
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Testing</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>Date and Time ---->
+        <a href="HelloServlet">press it</a>
+        </div>
+    </body>
+</html>
+
+
+
+
+
+//JAVA FILE
+
+vpackage p1;
+
+import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.*;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class HelloServlet extends HttpServlet {
+    Date d1 = new Date();
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet HelloServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1 style='color:red'>Servlet -> HelloServlet at Date & Time : " + d1 + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}
